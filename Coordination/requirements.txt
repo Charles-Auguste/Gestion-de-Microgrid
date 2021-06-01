@@ -1,0 +1,9 @@
+numpy
+GitPython
+pandas
+tqdm
+matplotlib
+pulp
+python-pptx
+gurobipy
+scipy

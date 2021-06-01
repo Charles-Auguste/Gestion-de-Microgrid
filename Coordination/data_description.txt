@@ -1,0 +1,44 @@
+To import these data in Python:
+- Pandas read_csv function provides directly a dataframe (my_df);
+- list(my_df[my_col]) provides a list with all the information in column 
+my_col of my_df;
+- np.array(my_df[my_col]) provides a Numpy array with all the information 
+in column my_col of my_df;
+- my_df[my_df["day"]==1] allows selecting only the part of the dataframe for 
+which the element in "day" column is 1. Then, both preceding line operations
+can be applied;
+- my_df[(my_df["site_id"]==1) & (my_df["scenario"]==1)] provides the same
+selection, but with a "double" condition.
+
+PV prod. data (pv_prod_scenarios.csv)
+
+- region: name of the region considered, in the set "grand_nord" ("h1a" on the 
+map pv_regions.png); "bretagne" ("h2a") ; "grand_est" ("h1b") ; "grand_ouest" ("h2b") ;
+"grand_rhone" ("h1c") ; "grand"sud_ouest" ("h2c") ; "grand_sud_est" ("h3") ; 
+"grande_ardeche" ("h2d")
+- day: of a full year (2014)
+- time_slot: hourly time-slot index in 1... 24 to model a full day
+- pv_prod (W/m2): PV production in a given time-slot, in W/m2. To get the production
+of a given PV panel at this time-slot, this value must be multiplied by the surface 
+of the panel.
+
+EV data (ev_scenarios.csv)
+
+- day: of a full year (2014)
+- ev_id: from 1 to the number of EV generated -> select the necessary number
+- time_slot_dep: departure time-slot of EVs (from home), randomly taken from 
+a Gaussian (mean=7, std=1) law
+- time_slot_arr: idem for arrival (at home), randomly taken from a Gaussian 
+(mean=7, std=1) law
+Remarks: 1. departure occurs before arrival in this modelling because the temporal 
+period considered is from 00AM to 00AM; alternative periods could be considered based 
+on the same dataset (e.g., night charging period 7PM to 7PM the next day); 2. all the 
+days simulated here correspond to weekdays; mobility pattern between weekdays and
+weekends have not been distinguished here.
+
+INDUSTRIAL CONSUMER data (indus_cons_scenarios.csv)
+
+- site_id: industrial site index (3 different sites)
+- scenario: index of the scenario considered (30 for each site)
+- time_slot: half-hourly time-slot index in 1... 48 to model a full day
+- cons (kW): industrial site consumption at current time-slot in kW

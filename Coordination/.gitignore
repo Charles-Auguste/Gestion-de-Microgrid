@@ -1,0 +1,7 @@
+players/*
+!players/any_player
+__pycache__/
+players/any_player/__pycache__/
+data/*
+!data/players.json
+!data/prices.csv
